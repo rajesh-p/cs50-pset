@@ -3,7 +3,8 @@
  *
  * Computer Science 50
  * Problem Set 5
- *
+ * 
+ * Author: Rajesh Padgilwar
  * Implements a dictionary's functionality.
  */
 
