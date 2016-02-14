@@ -39,7 +39,8 @@ node* hashtable[dictsize];
 //
 #include "dictionary.h"
 
-//write hashable function
+//hashable function
+// function taken from "http://www.cs.dartmouth.edu/~campbell/cs50/hash.c"
 int hv(char* str) {
   unsigned long hash = 5381;
   int c;
@@ -81,7 +82,7 @@ bool check(const char* word)
  */
 bool load(const char* dictionary)
 {
-    // TODO
+    //created load function to load dictionary 
     int hash_index = 0;
     
     char f_word[50];
@@ -97,11 +98,13 @@ bool load(const char* dictionary)
             //create new node
             node *new = malloc(sizeof(node));
             
+            /*getting hash_index */
             hash_index = hv(f_word);
             
             //head = hashtable[hash_index];
             
             //printf("%d ", hash_index);
+            // if empty list then add
             if(hashtable[hash_index] == NULL) {
                 
                 hashtable[hash_index] = new;
@@ -111,6 +114,7 @@ bool load(const char* dictionary)
                 wordcount++;
             }
             else {
+                // add word at head of list
                 // printf("%s ", temp->word);
                 new->next = hashtable[hash_index];
                 hashtable[hash_index] = new;
@@ -131,7 +135,7 @@ bool load(const char* dictionary)
  */
 unsigned int size(void)
 {
-    // TODO
+    // returning count of dictonary loaded
     return wordcount;
 }
 
@@ -140,7 +144,7 @@ unsigned int size(void)
  */
 bool unload(void)
 {
-    // TODO
+    // free memory
     for(int i=0; i < dictsize; i++) {
         if(hashtable[i]->next != NULL)
         {
